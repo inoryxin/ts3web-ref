@@ -1,0 +1,43 @@
+[package]
+name = "ts-bookkeeping"
+version = "0.1.0"
+authors = ["Flakebi <flakebi@t-online.de>"]
+description = "Structs to store the state of a TeamSpeak server, with its clients and channels."
+repository = "https://github.com/ReSpeak/tsclientlib/tree/master/utils/ts-bookkeeping"
+readme = "README.md"
+keywords = ["teamspeak3", "ts3"]
+license = "MIT OR Apache-2.0"
+build = "build/build.rs"
+edition = "2018"
+autobenches = false
+include = [
+	"/Cargo.toml",
+	"/README.md",
+	"**/*.rs",
+	"**/*.tt",
+]
+
+[dependencies]
+base64 = "0.13"
+num-traits = "0.2"
+num-derive = "0.3"
+serde = { version = "1", features = ["derive"] }
+slog = "2"
+thiserror = "1"
+time = { version = "0.2.23", features = ["serde"] }
+tsproto-packets = { path = "../tsproto-packets", version = "0.1" }
+tsproto-types = { path = "../tsproto-types", version = "0.1" }
+
+[build-dependencies]
+heck = "0.3"
+itertools = "0.10"
+t4rust-derive = "0.3"
+tsproto-structs = { path = "../tsproto-structs", version = "0.2" }
+
+[dev-dependencies]
+criterion = "0.3"
+slog-term = "2"
+
+[[bench]]
+name = "command"
+harness = false
